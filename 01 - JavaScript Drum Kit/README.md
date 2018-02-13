@@ -6,21 +6,21 @@
 以下為學習到的新知
 
 ## **JavaScript語法**
-### **element.classList**：
+### **element.classList**
 回傳element的class值(陣列)，  
 以下方法`add()`及`remove()`
 
-````
+```
 classList.add('aaa', 'bbb', 'ccc'); //新增多個className
 classList.remove('aaa', 'bbb', 'ccc'); //移除多個className
-````
+```
 如果已經存在/不存在的className則會被忽略。
 >其他方法:  
 `toggle()`偵測是否存在這個className，存在則刪除/不存在則新增  
 `contains()`偵測是否存在這個className, 返回true/false  
 參閱：[MDN-Element.classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList)
 
-### **HTMLmediaElement(audio)**：
+### **HTMLmediaElement(audio)**
 HTML的`audio`標籤，在HTML放置如下標籤指定音源
 
 ```
@@ -32,7 +32,7 @@ HTML的`audio`標籤，在HTML放置如下標籤指定音源
 範例中使用`currentTime`是為了有連續觸發聲音的效果 
 >參閱：[MDN-HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement)
 
-### ** transitionend**
+### **transitionend**
 當 transition 完成時會觸發此 event     
 若 transition 在執行中被中斷(意指 transition 沒有真正完成)則不會觸發。
 
@@ -46,14 +46,14 @@ addEventListener('transitionend', removeTransition);
 ### **箭頭函式(Arrow Function)**
 ES6的新語法
 
-````javascript
+```javascript
 //傳統寫法
 let func1 = function(arg) { console.log('Hi, ' + arg); };
 //箭頭函式寫法
 let func2 = arg => console.log('Hi, ' + arg);
 //補充:如果該function沒有參數要傳，要帶空括號如下
 let func3 = () => console.log('Hi');
-````
+```
 >參閱：[MDN-Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
 ### **template literals**
