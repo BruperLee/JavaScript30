@@ -100,15 +100,25 @@
 
       const seconds = now.getSeconds();
       const secondsDgress = ((seconds / 60) * 360);
-      secondHand.style.transform = `rotate(${secondsDgress}deg)`;
+      secondHand.style.transform = setRotage(secondsDgress);
 
       const mins = now.getMinutes();
       const minsDgress = ((mins / 60) * 360);
-      minsHand.style.transform = `rotate(${minsDgress}deg)`;
+      minsHand.style.transform = setRotage(minsDgress);
 
       const hour = now.getHours();
       const hourDgress = ((hour / 12) * 360);
-      hourHand.style.transform = `rotate(${hourDgress}deg)`;
+      hourHand.style.transform = setRotage(hourDgress);
+    }
+
+    function setRotage(dgress) {
+      if (dgress === 0) {
+        document.querySelector('.hand').style.transition = 'all 0s';
+      } else {
+        document.querySelector('.hand').style.transition = 'all 0.1s';
+      }
+
+      return `rotate(${dgress}deg)`;
     }
 
     setInterval(setDate, 1000);
