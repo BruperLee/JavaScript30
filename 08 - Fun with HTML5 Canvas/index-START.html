@@ -18,16 +18,33 @@ ctx.lineCap = 'round';        //線條結束樣式(轉角)
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
+let hue = 0;    //色相值
+let direction = true;
 
 function draw(e) {
   if (!isDrawing) {
     return;
   }
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;   //將線條顏色改成hsl模式
   ctx.beginPath();                  //起始畫圖路徑
   ctx.moveTo(lastX, lastY);         //將路徑指針移動到點 (x, y)
   ctx.lineTo(e.offsetX, e.offsetY); //將起始點到目前滑鼠所在位置(x, y)連成一直線
   ctx.stroke();                     //將圖畫出來
   [lastX, lastY] = [e.offsetX, e.offsetY];
+
+  hue++;
+  if (hue >= 360) {
+    hue = 0;
+  }
+  if (ctx.lineWidth >= 50 || ctx.lineWidth <= 1) {
+    direction = !direction;
+  }
+
+  if (direction) {
+    ctx.lineWidth++;
+  } else {
+    ctx.lineWidth--;
+  }
 }
 
 canvas.addEventListener('mousemove', draw);
