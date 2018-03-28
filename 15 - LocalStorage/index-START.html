@@ -50,18 +50,27 @@
         <li>
           <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
           <label for="item${i}">${plate.text}</label>
+          <span data-index=${i}>delete<span>
         </li>
       `;  
     }).join('');
   }
 
   function toggleDone(e) {
-    if (!e.target.matches('input')) {
+    const index = e.target.dataset.index;
+
+    if (e.target.matches('label')) {
        return; 
     }
 
-    const index = e.target.dataset.index;
-    items[index].done = !items[index].done;
+    if (e.target.matches('span')) {
+      items.splice(index, 1);
+    }
+
+    if (e.target.matches('input')) {
+      items[index].done = !items[index].done;
+    }
+
     localStorage.setItem('items', JSON.stringify(items));
     populateList(items, itemsList);
   }
